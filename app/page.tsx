@@ -12,9 +12,7 @@ import {
   ShoppingCart,
   Send,
   Play,
-  Calendar,
   MapPin,
-  DollarSign,
   CheckCircle,
   ArrowRight,
   MessageCircle,
@@ -87,32 +85,88 @@ export default function GenmoidHomepage() {
     {
       id: 1,
       title: "Full Stack Developer Intern",
-      type: "Remote",
-      duration: "3 months",
+      type: "Online",
       skills: ["React", "Node.js", "MongoDB"],
-      stipend: "₹15,000/month",
       openings: 5,
     },
     {
       id: 2,
       title: "Machine Learning Intern",
-      type: "Hybrid",
-      duration: "4 months",
+      type: "Online",
       skills: ["Python", "TensorFlow", "Data Science"],
-      stipend: "₹18,000/month",
       openings: 3,
     },
     {
       id: 3,
       title: "Mobile App Developer Intern",
-      type: "Remote",
-      duration: "3 months",
+      type: "Online",
       skills: ["React Native", "Flutter", "Firebase"],
-      stipend: "₹16,000/month",
+      openings: 4,
+    },
+    {
+      id: 4,
+      title: "Computer Vision Intern",
+      type: "Online",
+      skills: ["Python", "OpenCV", "PyTorch", "Image Processing"],
+      openings: 2,
+    },
+    {
+      id: 5,
+      title: "Android Developer Intern",
+      type: "Online",
+      skills: ["Kotlin", "Java", "Android Studio", "Material Design"],
+      openings: 6,
+    },
+    {
+      id: 6,
+      title: "Python Developer Intern",
+      type: "Online",
+      skills: ["Python", "Django", "Flask", "PostgreSQL"],
+      openings: 8,
+    },
+    {
+      id: 7,
+      title: "Java Developer Intern",
+      type: "Online",
+      skills: ["Java", "Spring Boot", "MySQL", "REST APIs"],
+      openings: 4,
+    },
+    {
+      id: 8,
+      title: "Gen AI Developer Intern",
+      type: "Online",
+      skills: ["Python", "LangChain", "OpenAI API", "Hugging Face"],
+      openings: 2,
+    },
+    {
+      id: 9,
+      title: "Web Development Intern",
+      type: "Online",
+      skills: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+      openings: 10,
+    },
+    {
+      id: 10,
+      title: "Data Science Intern",
+      type: "Online",
+      skills: ["Python", "Pandas", "NumPy", "Matplotlib", "SQL"],
+      openings: 5,
+    },
+    {
+      id: 11,
+      title: "Cyber Security Intern",
+      type: "Online",
+      skills: ["Network Security", "Ethical Hacking", "SIEM", "Python"],
+      openings: 3,
+    },
+    {
+      id: 12,
+      title: "AI Developer Intern",
+      type: "Online",
+      skills: ["Python", "TensorFlow", "Keras", "Neural Networks"],
       openings: 4,
     },
   ];
-
   const pastWork = [
     {
       title: "EdTech Platform for XYZ College",
@@ -169,8 +223,12 @@ export default function GenmoidHomepage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                <Code className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 bg-[#0b0f1a] rounded-2xl shadow-lg flex items-center justify-center">
+                <img
+                  src="/logo3.png" // update this to the correct image path
+                  alt="Genmoid Solutions Logo"
+                  className="w-10 h-10"
+                />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                 Genmoid Solutions
@@ -304,14 +362,7 @@ export default function GenmoidHomepage() {
                     <MapPin className="w-4 h-4 mr-2 text-purple-400" />
                     {internship.type}
                   </div>
-                  <div className="flex items-center text-gray-300">
-                    <Calendar className="w-4 h-4 mr-2 text-purple-400" />
-                    {internship.duration}
-                  </div>
-                  <div className="flex items-center text-gray-300">
-                    <DollarSign className="w-4 h-4 mr-2 text-purple-400" />
-                    {internship.stipend}
-                  </div>
+                
                 </div>
 
                 <div className="mb-6">
@@ -676,8 +727,12 @@ export default function GenmoidHomepage() {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                  <Code className="w-5 h-5 text-white" />
+                <div className="w-12 h-12 bg-[#0b0f1a] rounded-2xl shadow-lg flex items-center justify-center">
+                  <img
+                    src="/logo3.png" // update this to the correct image path
+                    alt="Genmoid Solutions Logo"
+                    className="w-10 h-10"
+                  />
                 </div>
                 <span className="text-xl font-bold text-white">
                   Genmoid Solutions
@@ -730,9 +785,24 @@ export default function GenmoidHomepage() {
               © 2024 Genmoid Solutions. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Privacy Policy</Link>
-              <Link href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Terms of Service</Link>
-              <Link href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Support</Link>
+              <Link
+                href="#"
+                className="text-gray-400 hover:text-purple-400 transition-colors"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                href="#"
+                className="text-gray-400 hover:text-purple-400 transition-colors"
+              >
+                Terms of Service
+              </Link>
+              <Link
+                href="#"
+                className="text-gray-400 hover:text-purple-400 transition-colors"
+              >
+                Support
+              </Link>
             </div>
           </div>
         </div>
@@ -748,7 +818,7 @@ export default function GenmoidHomepage() {
       {/* Scroll to Top Button */}
       <div className="fixed bottom-6 left-6 z-50">
         <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="w-12 h-12 bg-gray-800/80 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-all"
         >
           <ArrowRight className="w-5 h-5 transform -rotate-90" />
