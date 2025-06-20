@@ -14,10 +14,10 @@ import {
   Play,
   MapPin,
   CheckCircle,
-  ArrowRight,
   MessageCircle,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function GenmoidHomepage() {
   const [activeTab, setActiveTab] = useState("all");
@@ -224,7 +224,7 @@ export default function GenmoidHomepage() {
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-2">
               <div className="w-12 h-12 bg-transparent rounded-2xl shadow-lg flex items-center justify-center">
-                <img
+                <Image
                   src="/logo5.png" // update this to the correct image path
                   alt="Genmoid Solutions Logo"
                   className="w-10 h-10"
@@ -362,7 +362,7 @@ export default function GenmoidHomepage() {
                     <MapPin className="w-4 h-4 mr-2 text-purple-400" />
                     {internship.type}
                   </div>
-                
+
                 </div>
 
                 <div className="mb-6">
@@ -414,11 +414,10 @@ export default function GenmoidHomepage() {
               ].map((tab) => (
                 <button
                   key={tab.key}
-                  className={`px-6 py-2 rounded-full transition-all ${
-                    activeTab === tab.key
+                  className={`px-6 py-2 rounded-full transition-all ${activeTab === tab.key
                       ? "bg-purple-600 text-white"
                       : "text-gray-400 hover:text-white"
-                  }`}
+                    }`}
                   onClick={() => setActiveTab(tab.key)}
                 >
                   {tab.label}
@@ -493,9 +492,8 @@ export default function GenmoidHomepage() {
             Share your vision and let us bring it to life
           </p>
 
-          <form
+          <form onSubmit={handleContactSubmit}
             className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-2xl p-8 border border-gray-700/50"
-            onSubmit={handleIdeaSubmit}
           >
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <input
@@ -564,7 +562,7 @@ export default function GenmoidHomepage() {
           </form>
         </div>
       </section>
-      
+
       {/* Past Work Section */}
       <section id="work" className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
@@ -615,9 +613,10 @@ export default function GenmoidHomepage() {
             <h2 className="text-4xl font-bold text-white mb-4">
               Get In Touch
             </h2>
-            <p className="text-gray-400 text-lg">
-              Ready to start your journey? Let's discuss your project or career goals
-            </p>
+          <p className="text-gray-400 text-lg">
+  Ready to start your journey? Let&apos;s discuss your project or career goals
+</p>
+
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
@@ -636,7 +635,7 @@ export default function GenmoidHomepage() {
                       <div className="text-white font-semibold">+91 98765 43210</div>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
                       <Mail className="w-5 h-5 text-purple-400" />
@@ -646,7 +645,7 @@ export default function GenmoidHomepage() {
                       <div className="text-white font-semibold">contact@genmoidsolutions.com</div>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
                       <Github className="w-5 h-5 text-purple-400" />
@@ -699,7 +698,7 @@ export default function GenmoidHomepage() {
                     setContactForm({ ...contactForm, name: e.target.value })
                   }
                 />
-                
+
                 <input
                   type="email"
                   placeholder="Your Email"
@@ -709,7 +708,7 @@ export default function GenmoidHomepage() {
                     setContactForm({ ...contactForm, email: e.target.value })
                   }
                 />
-                
+
                 <textarea
                   placeholder="Your Message"
                   rows={5}
@@ -719,7 +718,7 @@ export default function GenmoidHomepage() {
                     setContactForm({ ...contactForm, message: e.target.value })
                   }
                 />
-                
+
                 <button
                   type="submit"
                   className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all flex items-center justify-center space-x-2"
@@ -747,7 +746,7 @@ export default function GenmoidHomepage() {
                 Empowering students through innovative technology solutions and comprehensive mentorship programs.
               </p>
             </div>
-            
+
             <div>
               <h3 className="text-white font-semibold mb-4">Services</h3>
               <ul className="space-y-2 text-sm text-gray-400">
@@ -757,7 +756,7 @@ export default function GenmoidHomepage() {
                 <li>Personal Mentorship</li>
               </ul>
             </div>
-            
+
             <div>
               <h3 className="text-white font-semibold mb-4">Technologies</h3>
               <ul className="space-y-2 text-sm text-gray-400">
@@ -767,23 +766,37 @@ export default function GenmoidHomepage() {
                 <li>IoT Solutions</li>
               </ul>
             </div>
-            
+
             <div>
               <h3 className="text-white font-semibold mb-4">Connect</h3>
               <div className="flex space-x-4">
-                <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors">
-                  <Github className="w-4 h-4 text-gray-400 hover:text-white" />
-                </a>
-                <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors">
-                  <Mail className="w-4 h-4 text-gray-400 hover:text-white" />
-                </a>
-                <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors">
-                  <MessageCircle className="w-4 h-4 text-gray-400 hover:text-white" />
-                </a>
-              </div>
+  <a
+    href="https://github.com/yourusername"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors"
+  >
+    <Github className="w-4 h-4 text-gray-400 hover:text-white" />
+  </a>
+  <a
+    href="mailto:you@example.com"
+    className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors"
+  >
+    <Mail className="w-4 h-4 text-gray-400 hover:text-white" />
+  </a>
+  <a
+    href="https://twitter.com/yourhandle"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors"
+  >
+    <MessageCircle className="w-4 h-4 text-gray-400 hover:text-white" />
+  </a>
+</div>
+
             </div>
           </div>
-          
+
           <div className="pt-8 border-t border-gray-800 text-center">
             <p className="text-gray-400 text-sm">
               © 2024 Genmoid Solutions. All rights reserved. Built with ❤️ for students.
