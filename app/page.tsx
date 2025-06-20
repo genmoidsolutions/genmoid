@@ -85,84 +85,84 @@ export default function GenmoidHomepage() {
     {
       id: 1,
       title: "Full Stack Developer Intern",
-      type: "Online",
+      type: "Remote",
       skills: ["React", "Node.js", "MongoDB"],
       openings: 5,
     },
     {
       id: 2,
       title: "Machine Learning Intern",
-      type: "Online",
+      type: "Remote",
       skills: ["Python", "TensorFlow", "Data Science"],
       openings: 3,
     },
     {
       id: 3,
       title: "Mobile App Developer Intern",
-      type: "Online",
+      type: "Remote",
       skills: ["React Native", "Flutter", "Firebase"],
       openings: 4,
     },
     {
       id: 4,
       title: "Computer Vision Intern",
-      type: "Online",
+      type: "Remote",
       skills: ["Python", "OpenCV", "PyTorch", "Image Processing"],
       openings: 2,
     },
     {
       id: 5,
       title: "Android Developer Intern",
-      type: "Online",
+      type: "Remote",
       skills: ["Kotlin", "Java", "Android Studio", "Material Design"],
       openings: 6,
     },
     {
       id: 6,
       title: "Python Developer Intern",
-      type: "Online",
+      type: "Remote",
       skills: ["Python", "Django", "Flask", "PostgreSQL"],
       openings: 8,
     },
     {
       id: 7,
       title: "Java Developer Intern",
-      type: "Online",
+      type: "Remote",
       skills: ["Java", "Spring Boot", "MySQL", "REST APIs"],
       openings: 4,
     },
     {
       id: 8,
       title: "Gen AI Developer Intern",
-      type: "Online",
+      type: "Remote",
       skills: ["Python", "LangChain", "OpenAI API", "Hugging Face"],
       openings: 2,
     },
     {
       id: 9,
       title: "Web Development Intern",
-      type: "Online",
+      type: "Remote",
       skills: ["HTML", "CSS", "JavaScript", "Bootstrap"],
       openings: 10,
     },
     {
       id: 10,
       title: "Data Science Intern",
-      type: "Online",
+      type: "Remote",
       skills: ["Python", "Pandas", "NumPy", "Matplotlib", "SQL"],
       openings: 5,
     },
     {
       id: 11,
       title: "Cyber Security Intern",
-      type: "Online",
+      type: "Remote",
       skills: ["Network Security", "Ethical Hacking", "SIEM", "Python"],
       openings: 3,
     },
     {
       id: 12,
       title: "AI Developer Intern",
-      type: "Online",
+      type: "Remote",
       skills: ["Python", "TensorFlow", "Keras", "Neural Networks"],
       openings: 4,
     },
@@ -223,9 +223,9 @@ export default function GenmoidHomepage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-2">
-              <div className="w-12 h-12 bg-[#0b0f1a] rounded-2xl shadow-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-transparent rounded-2xl shadow-lg flex items-center justify-center">
                 <img
-                  src="/logo3.png" // update this to the correct image path
+                  src="/logo5.png" // update this to the correct image path
                   alt="Genmoid Solutions Logo"
                   className="w-10 h-10"
                 />
@@ -564,7 +564,7 @@ export default function GenmoidHomepage() {
           </form>
         </div>
       </section>
-
+      
       {/* Past Work Section */}
       <section id="work" className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
@@ -609,221 +609,188 @@ export default function GenmoidHomepage() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 bg-black/20">
-        <div className="max-w-6xl mx-auto">
+      <section id="contact" className="py-20 px-4">
+        <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">Get In Touch</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">
+              Get In Touch
+            </h2>
             <p className="text-gray-400 text-lg">
-              Ready to start your journey? Let&apos;s talk!
+              Ready to start your journey? Let's discuss your project or career goals
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-2xl p-8 border border-gray-700/50">
-              <h3 className="text-2xl font-bold text-white mb-6">
-                Send us a message
-              </h3>
-              <form onSubmit={handleContactSubmit}>
-                <div className="mb-6">
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    required
-                    value={contactForm.name}
-                    className="w-full bg-gray-800/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none"
-                    onChange={(e) =>
-                      setContactForm({ ...contactForm, name: e.target.value })
-                    }
-                  />
-                </div>
-                <div className="mb-6">
-                  <input
-                    type="email"
-                    placeholder="Your Email"
-                    required
-                    value={contactForm.email}
-                    className="w-full bg-gray-800/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none"
-                    onChange={(e) =>
-                      setContactForm({ ...contactForm, email: e.target.value })
-                    }
-                  />
-                </div>
-                <div className="mb-6">
-                  <textarea
-                    placeholder="Your Message"
-                    required
-                    rows={4}
-                    value={contactForm.message}
-                    className="w-full bg-gray-800/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none"
-                    onChange={(e) =>
-                      setContactForm({
-                        ...contactForm,
-                        message: e.target.value,
-                      })
-                    }
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all flex items-center justify-center space-x-2"
-                >
-                  <Send className="w-4 h-4" />
-                  <span>Send Message</span>
-                </button>
-              </form>
-            </div>
-
-            {/* Contact Info */}
+          <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-8">
-              <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-2xl p-6 border border-gray-700/50">
+              <div>
                 <h3 className="text-2xl font-bold text-white mb-6">
                   Contact Information
                 </h3>
                 <div className="space-y-4">
-                  <div className="flex items-center text-gray-300">
-                    <Mail className="w-5 h-5 mr-3 text-purple-400" />
-                    <span>contact@genmoidsolutions.com</span>
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
+                      <Phone className="w-5 h-5 text-purple-400" />
+                    </div>
+                    <div>
+                      <div className="text-gray-400">Phone</div>
+                      <div className="text-white font-semibold">+91 98765 43210</div>
+                    </div>
                   </div>
-                  <div className="flex items-center text-gray-300">
-                    <Phone className="w-5 h-5 mr-3 text-purple-400" />
-                    <span>+91 98765 43210</span>
+                  
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
+                      <Mail className="w-5 h-5 text-purple-400" />
+                    </div>
+                    <div>
+                      <div className="text-gray-400">Email</div>
+                      <div className="text-white font-semibold">contact@genmoidsolutions.com</div>
+                    </div>
                   </div>
-                  <div className="flex items-center text-gray-300">
-                    <MessageCircle className="w-5 h-5 mr-3 text-green-400" />
-                    <span>WhatsApp: +91 98765 43210</span>
+                  
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
+                      <Github className="w-5 h-5 text-purple-400" />
+                    </div>
+                    <div>
+                      <div className="text-gray-400">GitHub</div>
+                      <div className="text-white font-semibold">@genmoidsolutions</div>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-2xl p-6 border border-gray-700/50">
+              <div>
                 <h3 className="text-xl font-bold text-white mb-4">
-                  Quick Actions
+                  Why Choose Us?
                 </h3>
                 <div className="space-y-3">
-                  <button className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-all flex items-center justify-center space-x-2">
-                    <MessageCircle className="w-4 h-4" />
-                    <span>WhatsApp Us</span>
-                  </button>
-                  <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all flex items-center justify-center space-x-2">
-                    <Mail className="w-4 h-4" />
-                    <span>Email Us</span>
-                  </button>
-                  <button className="w-full bg-gray-700 text-white py-3 rounded-lg font-semibold hover:bg-gray-600 transition-all flex items-center justify-center space-x-2">
-                    <Github className="w-4 h-4" />
-                    <span>View GitHub</span>
-                  </button>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <span className="text-gray-300">100% Original Projects</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <span className="text-gray-300">Complete Documentation</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <span className="text-gray-300">Personal Mentorship</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <span className="text-gray-300">Job Placement Support</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <span className="text-gray-300">Lifetime Support</span>
+                  </div>
                 </div>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-2xl p-8 border border-gray-700/50">
+              <div className="space-y-6">
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  value={contactForm.name}
+                  className="w-full bg-gray-800/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none"
+                  onChange={(e) =>
+                    setContactForm({ ...contactForm, name: e.target.value })
+                  }
+                />
+                
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  value={contactForm.email}
+                  className="w-full bg-gray-800/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none"
+                  onChange={(e) =>
+                    setContactForm({ ...contactForm, email: e.target.value })
+                  }
+                />
+                
+                <textarea
+                  placeholder="Your Message"
+                  rows={5}
+                  value={contactForm.message}
+                  className="w-full bg-gray-800/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none"
+                  onChange={(e) =>
+                    setContactForm({ ...contactForm, message: e.target.value })
+                  }
+                />
+                
+                <button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all flex items-center justify-center space-x-2"
+                >
+                  <Send className="w-5 h-5" />
+                  <span>Send Message</span>
+                </button>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-black/40 border-t border-gray-800 py-12 px-4">
+      <footer className="py-12 px-4 bg-black/40 border-t border-gray-800">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-12 h-12 bg-[#0b0f1a] rounded-2xl shadow-lg flex items-center justify-center">
-                  <img
-                    src="/logo3.png" // update this to the correct image path
-                    alt="Genmoid Solutions Logo"
-                    className="w-10 h-10"
-                  />
+                <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg flex items-center justify-center">
+                  <Code className="w-4 h-4 text-white" />
                 </div>
-                <span className="text-xl font-bold text-white">
-                  Genmoid Solutions
-                </span>
+                <span className="text-lg font-bold text-white">Genmoid Solutions</span>
               </div>
-              <p className="text-gray-400">
-                Empowering students through innovative technology solutions and
-                career opportunities.
+              <p className="text-gray-400 text-sm">
+                Empowering students through innovative technology solutions and comprehensive mentorship programs.
               </p>
             </div>
-
+            
             <div>
-              <h4 className="text-white font-semibold mb-4">Services</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>Internship Programs</li>
+              <h3 className="text-white font-semibold mb-4">Services</h3>
+              <ul className="space-y-2 text-sm text-gray-400">
                 <li>Readymade Projects</li>
                 <li>Custom Development</li>
-                <li>Mentorship</li>
+                <li>Internship Programs</li>
+                <li>Personal Mentorship</li>
               </ul>
             </div>
-
+            
             <div>
-              <h4 className="text-white font-semibold mb-4">Technologies</h4>
-              <ul className="space-y-2 text-gray-400">
+              <h3 className="text-white font-semibold mb-4">Technologies</h3>
+              <ul className="space-y-2 text-sm text-gray-400">
                 <li>Web Development</li>
                 <li>Machine Learning</li>
-                <li>Mobile Apps</li>
+                <li>Mobile Development</li>
                 <li>IoT Solutions</li>
               </ul>
             </div>
-
+            
             <div>
-              <h4 className="text-white font-semibold mb-4">Connect</h4>
+              <h3 className="text-white font-semibold mb-4">Connect</h3>
               <div className="flex space-x-4">
-                <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors cursor-pointer">
-                  <Github className="w-5 h-5 text-gray-400" />
-                </div>
-                <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
-                  <Mail className="w-5 h-5 text-gray-400" />
-                </div>
-                <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors cursor-pointer">
-                  <MessageCircle className="w-5 h-5 text-gray-400" />
-                </div>
+                <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors">
+                  <Github className="w-4 h-4 text-gray-400 hover:text-white" />
+                </a>
+                <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors">
+                  <Mail className="w-4 h-4 text-gray-400 hover:text-white" />
+                </a>
+                <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors">
+                  <MessageCircle className="w-4 h-4 text-gray-400 hover:text-white" />
+                </a>
               </div>
             </div>
           </div>
-
-          <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-center md:text-left">
-              © 2024 Genmoid Solutions. All rights reserved.
+          
+          <div className="pt-8 border-t border-gray-800 text-center">
+            <p className="text-gray-400 text-sm">
+              © 2024 Genmoid Solutions. All rights reserved. Built with ❤️ for students.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link
-                href="#"
-                className="text-gray-400 hover:text-purple-400 transition-colors"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="#"
-                className="text-gray-400 hover:text-purple-400 transition-colors"
-              >
-                Terms of Service
-              </Link>
-              <Link
-                href="#"
-                className="text-gray-400 hover:text-purple-400 transition-colors"
-              >
-                Support
-              </Link>
-            </div>
           </div>
         </div>
       </footer>
-
-      {/* Floating Action Button */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <button className="w-14 h-14 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-lg hover:shadow-purple-500/25 flex items-center justify-center text-white hover:scale-110 transition-all">
-          <MessageCircle className="w-6 h-6" />
-        </button>
-      </div>
-
-      {/* Scroll to Top Button */}
-      <div className="fixed bottom-6 left-6 z-50">
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="w-12 h-12 bg-gray-800/80 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-all"
-        >
-          <ArrowRight className="w-5 h-5 transform -rotate-90" />
-        </button>
-      </div>
     </div>
   );
 }
