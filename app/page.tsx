@@ -1,26 +1,20 @@
 "use client";
 import React, { useState } from "react";
 import {
-  Code,
-  Lightbulb,
-  Phone,
-  Mail,
-  Github,
-  ExternalLink,
-  Star,
-  Briefcase,
-  ShoppingCart,
-  Send,
-  Play,
-  MapPin,
   CheckCircle,
-  MessageCircle,
+  ChevronLeft,
+  ChevronRight,
+  ArrowUp,
+  Facebook,
+  Instagram,
+  Linkedin,
+  MessageSquareMore
 } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
-
 export default function GenmoidHomepage() {
+  const [activeSlide, setActiveSlide] = useState(0);
   const [activeTab, setActiveTab] = useState("all");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [contactForm, setContactForm] = useState({
     name: "",
     email: "",
@@ -34,572 +28,197 @@ export default function GenmoidHomepage() {
     contact: "",
   });
 
-  const projects = [
+  const heroSlides = [
     {
-      id: 1,
-      title: "E-Commerce Web App",
-      category: "web",
-      tech: ["React", "Node.js", "MongoDB"],
-      price: 2999,
-      description:
-        "Full-stack e-commerce solution with admin panel, payment gateway, and inventory management.",
-      demo: "🎥 Demo Available",
-      rating: 4.9,
+      title: "Welcome to Genmoid Solutions",
+      subtitle: "Empowering Students Through Technology",
+      description: "We are a trusted Software Development and IT Services company, combining deep technical expertise and industry experience to help students and businesses anticipate what's next. Our offerings create unique competitive advantages by giving you the power to see beyond and rise above.",
+      cta: "Let's work together",
+      background: "bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900"
     },
     {
-      id: 2,
-      title: "AI Chatbot System",
-      category: "ml",
-      tech: ["Python", "TensorFlow", "Flask"],
-      price: 3999,
-      description:
-        "Intelligent chatbot with NLP capabilities for customer service automation.",
-      demo: "🎥 Demo Available",
-      rating: 4.8,
+      title: "Everything starts with ambition",
+      subtitle: "Transform Ideas into Reality",
+      description: "If you can think it, we can develop it. We turn bold ideas into groundbreaking business solutions for a tomorrow built on technology. From concept to deployment, we're your technology partner.",
+      cta: "What's Your Ambition?",
+      background: "bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900"
     },
     {
-      id: 3,
-      title: "IoT Home Automation",
-      category: "iot",
-      tech: ["Arduino", "ESP32", "React"],
-      price: 2499,
-      description:
-        "Complete home automation system with mobile app control and sensor integration.",
-      demo: "🎥 Demo Available",
-      rating: 4.7,
-    },
-    {
-      id: 4,
-      title: "Stock Price Predictor",
-      category: "ml",
-      tech: ["Python", "Pandas", "Scikit-learn"],
-      price: 1999,
-      description:
-        "Machine learning model for stock price prediction with data visualization dashboard.",
-      demo: "🎥 Demo Available",
-      rating: 4.6,
-    },
+      title: "Internship Program for Students",
+      subtitle: "Learn, Build, Succeed",
+      description: "Welcome to our comprehensive internship program designed for students. Get hands-on experience with real projects, mentorship from industry experts, and certification that matters. Join thousands of students who have kickstarted their careers with us.",
+      cta: "Join Our Program",
+      background: "bg-gradient-to-br from-orange-900 via-red-900 to-pink-900"
+    }
   ];
 
-  const internships = [
-    {
-      id: 1,
-      title: "Full Stack Developer Intern",
-      type: "Remote",
-      skills: ["React", "Node.js", "MongoDB"],
-      openings: 5,
-    },
-    {
-      id: 2,
-      title: "Machine Learning Intern",
-      type: "Remote",
-      skills: ["Python", "TensorFlow", "Data Science"],
-      openings: 3,
-    },
-    {
-      id: 3,
-      title: "Mobile App Developer Intern",
-      type: "Remote",
-      skills: ["React Native", "Flutter", "Firebase"],
-      openings: 4,
-    },
-    {
-      id: 4,
-      title: "Computer Vision Intern",
-      type: "Remote",
-      skills: ["Python", "OpenCV", "PyTorch", "Image Processing"],
-      openings: 2,
-    },
-    {
-      id: 5,
-      title: "Android Developer Intern",
-      type: "Remote",
-      skills: ["Kotlin", "Java", "Android Studio", "Material Design"],
-      openings: 6,
-    },
-    {
-      id: 6,
-      title: "Python Developer Intern",
-      type: "Remote",
-      skills: ["Python", "Django", "Flask", "PostgreSQL"],
-      openings: 8,
-    },
-    {
-      id: 7,
-      title: "Java Developer Intern",
-      type: "Remote",
-      skills: ["Java", "Spring Boot", "MySQL", "REST APIs"],
-      openings: 4,
-    },
-    {
-      id: 8,
-      title: "Gen AI Developer Intern",
-      type: "Remote",
-      skills: ["Python", "LangChain", "OpenAI API", "Hugging Face"],
-      openings: 2,
-    },
-    {
-      id: 9,
-      title: "Web Development Intern",
-      type: "Remote",
-      skills: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-      openings: 10,
-    },
-    {
-      id: 10,
-      title: "Data Science Intern",
-      type: "Remote",
-      skills: ["Python", "Pandas", "NumPy", "Matplotlib", "SQL"],
-      openings: 5,
-    },
-    {
-      id: 11,
-      title: "Cyber Security Intern",
-      type: "Remote",
-      skills: ["Network Security", "Ethical Hacking", "SIEM", "Python"],
-      openings: 3,
-    },
-    {
-      id: 12,
-      title: "AI Developer Intern",
-      type: "Remote",
-      skills: ["Python", "TensorFlow", "Keras", "Neural Networks"],
-      openings: 4,
-    },
-  ];
   const pastWork = [
     {
       title: "EdTech Platform for XYZ College",
-      description:
-        "Built a comprehensive learning management system serving 5000+ students",
+      description: "Built a comprehensive learning management system serving 5000+ students with interactive courses and assessments.",
       tech: ["React", "Node.js", "PostgreSQL"],
       result: "40% improvement in student engagement",
+      image: "🎓"
     },
     {
       title: "Healthcare Management System",
-      description:
-        "Developed patient management and appointment scheduling system",
+      description: "Developed patient management and appointment scheduling system for a multi-specialty hospital.",
       tech: ["Python", "Django", "MySQL"],
       result: "Reduced appointment wait time by 60%",
+      image: "🏥"
     },
     {
       title: "Smart Agriculture IoT Solution",
-      description:
-        "Automated irrigation system with weather prediction integration",
+      description: "Automated irrigation system with weather prediction integration for sustainable farming.",
       tech: ["Arduino", "Python", "React"],
       result: "30% water consumption reduction",
-    },
+      image: "🌱"
+    }
   ];
 
-  const filteredProjects =
-    activeTab === "all"
-      ? projects
-      : projects.filter((project) => project.category === activeTab);
 
-  const handleContactSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    alert("Thank you for contacting us! We will get back to you soon.");
-    setContactForm({ name: "", email: "", message: "" });
+  const nextSlide = () => {
+    setActiveSlide((prev) => (prev + 1) % heroSlides.length);
   };
 
-  const handleIdeaSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    alert(
-      "Your project idea has been submitted successfully! Our team will review it and get back to you.",
-    );
-    setIdeaForm({
-      title: "",
-      description: "",
-      techStack: "",
-      timeline: "",
-      contact: "",
-    });
+  const prevSlide = () => {
+    setActiveSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+  };
+
+
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900">
-      {/* Navigation */}
-      <nav className="bg-black/20 backdrop-blur-md border-b border-purple-500/20 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-12 h-12 bg-transparent rounded-2xl shadow-lg flex items-center justify-center">
-                <Image
-                  src="/logo5.png" // update this to the correct image path
-                  alt="Genmoid Solutions Logo"
-                  className="w-10 h-10"
-                />
-              </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Genmoid Solutions
-              </span>
-            </div>
-            <div className="hidden md:flex space-x-8">
-              <Link
-                href="#home"
-                className="text-gray-300 hover:text-purple-400 transition-colors"
-              >
-                Home
-              </Link>
-              <Link
-                href="#internships"
-                className="text-gray-300 hover:text-purple-400 transition-colors"
-              >
-                Internships
-              </Link>
-              <Link
-                href="#projects"
-                className="text-gray-300 hover:text-purple-400 transition-colors"
-              >
-                Projects
-              </Link>
-              <Link
-                href="#work"
-                className="text-gray-300 hover:text-purple-400 transition-colors"
-              >
-                Our Work
-              </Link>
-              <Link
-                href="#contact"
-                className="text-gray-300 hover:text-purple-400 transition-colors"
-              >
-                Contact
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
 
       {/* Hero Section */}
-      <section id="home" className="pt-20 pb-32 px-4">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="mb-8">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                Empowering&nbsp;
-              </span>
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Students&nbsp;
-              </span>
-              <br />
-              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                Through Innovation
-              </span>
-            </h1>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-12">
-              Your gateway to premium internships, readymade projects, and
-              turning ideas into reality. Join thousands of students who&apos;ve
-              accelerated their careers with Genmoid Solutions.
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 flex items-center space-x-2">
-              <ShoppingCart className="w-5 h-5" />
-              <span>Buy Projects</span>
-            </button>
-            <button className="px-8 py-4 border-2 border-purple-500 rounded-full text-purple-400 font-semibold hover:bg-purple-500 hover:text-white transition-all flex items-center space-x-2">
-              <Briefcase className="w-5 h-5" />
-              <span>Join Internship</span>
-            </button>
-            <button className="px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full text-white font-semibold hover:from-emerald-700 hover:to-teal-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-emerald-500/25 flex items-center space-x-2">
-              <Lightbulb className="w-5 h-5" />
-              <span>Submit Idea</span>
-            </button>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-purple-400">500+</div>
-              <div className="text-gray-400">Projects Delivered</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-pink-400">1000+</div>
-              <div className="text-gray-400">Students Mentored</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-400">50+</div>
-              <div className="text-gray-400">College Partners</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-400">4.9</div>
-              <div className="text-gray-400">Average Rating</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Internships Section */}
-      <section id="internships" className="py-20 px-4 bg-black/20">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Current Internship Openings
-            </h2>
-            <p className="text-gray-400 text-lg">
-              Kickstart your career with hands-on experience
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {internships.map((internship) => (
-              <div
-                key={internship.id}
-                className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-2xl p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all hover:transform hover:scale-105"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-bold text-white">
-                    {internship.title}
-                  </h3>
-                  <span className="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-sm">
-                    {internship.openings} openings
-                  </span>
-                </div>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-center text-gray-300">
-                    <MapPin className="w-4 h-4 mr-2 text-purple-400" />
-                    {internship.type}
-                  </div>
-
-                </div>
-
-                <div className="mb-6">
-                  <div className="text-sm text-gray-400 mb-2">
-                    Required Skills:
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {internship.skills.map((skill, index) => (
-                      <span
-                        key={index}
-                        className="bg-gray-700/50 text-gray-300 px-2 py-1 rounded text-sm"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all flex items-center justify-center space-x-2">
-                  <Send className="w-4 h-4" />
-                  <span>Apply Now</span>
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Readymade Projects
-            </h2>
-            <p className="text-gray-400 text-lg">
-              High-quality projects ready for submission
-            </p>
-          </div>
-
-          {/* Filter Tabs */}
-          <div className="flex justify-center mb-12">
-            <div className="bg-gray-800/50 rounded-full p-2 flex space-x-2">
-              {[
-                { key: "all", label: "All Projects" },
-                { key: "web", label: "Web Dev" },
-                { key: "ml", label: "Machine Learning" },
-                { key: "iot", label: "IoT" },
-              ].map((tab) => (
-                <button
-                  key={tab.key}
-                  className={`px-6 py-2 rounded-full transition-all ${activeTab === tab.key
-                      ? "bg-purple-600 text-white"
-                      : "text-gray-400 hover:text-white"
-                    }`}
-                  onClick={() => setActiveTab(tab.key)}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-            {filteredProjects.map((project) => (
-              <div
-                key={project.id}
-                className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-2xl overflow-hidden border border-gray-700/50 hover:border-purple-500/50 transition-all hover:transform hover:scale-105"
-              >
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-bold text-white">
-                      {project.title}
-                    </h3>
-                    <div className="flex items-center space-x-1">
-                      <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                      <span className="text-yellow-400">{project.rating}</span>
-                    </div>
-                  </div>
-
-                  <p className="text-gray-400 mb-4">{project.description}</p>
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((tech, index) => (
-                      <span
-                        key={index}
-                        className="bg-purple-500/20 text-purple-400 px-2 py-1 rounded text-sm"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-2xl font-bold text-green-400">
-                      ₹{project.price}
-                    </span>
-                    <span className="text-purple-400 flex items-center space-x-1">
-                      <Play className="w-4 h-4" />
-                      <span>{project.demo}</span>
-                    </span>
-                  </div>
-
-                  <div className="flex space-x-3">
-                    <button className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all flex items-center justify-center space-x-2">
-                      <ShoppingCart className="w-4 h-4" />
-                      <span>Buy Now</span>
-                    </button>
-                    <button className="px-4 py-3 border border-purple-500 text-purple-400 rounded-lg hover:bg-purple-500 hover:text-white transition-all">
-                      <ExternalLink className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Submit Idea Section */}
-      <section className="py-20 px-4 bg-black/20">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-white mb-4">
-            Have a Project Idea?
-          </h2>
-          <p className="text-gray-400 text-lg mb-12">
-            Share your vision and let us bring it to life
-          </p>
-
-          <form onSubmit={handleContactSubmit}
-            className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-2xl p-8 border border-gray-700/50"
-          >
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
-              <input
-                type="text"
-                placeholder="Project Title"
-                required
-                value={ideaForm.title}
-                className="bg-gray-800/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none"
-                onChange={(e) =>
-                  setIdeaForm({ ...ideaForm, title: e.target.value })
-                }
-              />
-              <input
-                type="text"
-                placeholder="Tech Stack (e.g., React, Python)"
-                required
-                value={ideaForm.techStack}
-                className="bg-gray-800/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none"
-                onChange={(e) =>
-                  setIdeaForm({ ...ideaForm, techStack: e.target.value })
-                }
-              />
-            </div>
-
-            <textarea
-              placeholder="Describe your project idea in detail..."
-              required
-              rows={4}
-              value={ideaForm.description}
-              className="w-full bg-gray-800/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none mb-6"
-              onChange={(e) =>
-                setIdeaForm({ ...ideaForm, description: e.target.value })
-              }
-            />
-
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
-              <input
-                type="text"
-                placeholder="Expected Timeline"
-                required
-                value={ideaForm.timeline}
-                className="bg-gray-800/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none"
-                onChange={(e) =>
-                  setIdeaForm({ ...ideaForm, timeline: e.target.value })
-                }
-              />
-              <input
-                type="email"
-                placeholder="Your Email"
-                required
-                value={ideaForm.contact}
-                className="bg-gray-800/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none"
-                onChange={(e) =>
-                  setIdeaForm({ ...ideaForm, contact: e.target.value })
-                }
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-4 rounded-lg font-semibold hover:from-emerald-700 hover:to-teal-700 transition-all flex items-center justify-center space-x-2"
+      <section id="home" className="relative h-screen overflow-hidden">
+        <div className="absolute inset-0">
+          {heroSlides.map((slide, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${index === activeSlide ? 'opacity-100' : 'opacity-0'
+                } ${slide.background}`}
             >
-              <Lightbulb className="w-5 h-5" />
-              <span>Submit Your Idea</span>
-            </button>
-          </form>
+              <div className="absolute inset-0 bg-black/40" />
+              <div className="relative h-full flex items-center justify-center">
+                <div className="max-w-4xl mx-auto text-center px-4">
+                  <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in">
+                    {slide.title}
+                  </h1>
+                  <h2 className="text-2xl md:text-3xl text-purple-300 mb-8 animate-fade-in-delay">
+                    {slide.subtitle}
+                  </h2>
+                  <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto animate-fade-in-delay-2">
+                    {slide.description}
+                  </p>
+                  <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-purple-700 hover:to-pink-700 transition-all animate-bounce-in">
+                    {slide.cta}
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <button
+          onClick={prevSlide}
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/20 backdrop-blur-md text-white p-3 rounded-full hover:bg-black/40 transition-all"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+
+        <button
+          onClick={nextSlide}
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/20 backdrop-blur-md text-white p-3 rounded-full hover:bg-black/40 transition-all"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
+
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all ${index === activeSlide ? 'bg-purple-500' : 'bg-white/50'
+                }`}
+            />
+          ))}
         </div>
       </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 px-4 bg-black/20">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl font-bold text-white mb-6">We Are Genmoid Solutions</h2>
+              <h5 className="text-xl text-purple-300 mb-6">
+                At Genmoid Solutions, we have experience helping our customers solve key business challenges to achieve their goals with solutions in real-world applications. Find your path to faster success.
+              </h5>
+            </div>
+            <div>
+              <p className="text-gray-300 mb-6">
+                We offer reliable, efficient delivery with high-caliber engineers & finely-tuned software development processes. We believe in Leadership to lead the technology to build a better future, Integrity to follow truth and be real, Accountability for our every commitment.
+              </p>
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-purple-500" />
+                  <span className="text-gray-300">We Imagine</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-purple-500" />
+                  <span className="text-gray-300">We Engineer</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-purple-500" />
+                  <span className="text-gray-300">We Modernize</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-purple-500" />
+                  <span className="text-gray-300">We Manage</span>
+                </div>
+              </div>
+              <p className="text-gray-400 italic">
+                Increasing revenue, improving efficiency, reducing cost—these are all accomplished by implementing innovative technology that's purpose-built to solve the challenges holding your organization back.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+
+
 
       {/* Past Work Section */}
-      <section id="work" className="py-20 px-4">
+      <section className="py-20 px-4 bg-black/20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Our Past Work
-            </h2>
-            <p className="text-gray-400 text-lg">
-              Proven track record of successful projects
-            </p>
+            <h2 className="text-4xl font-bold text-white mb-4">Our Past Work</h2>
+            <p className="text-gray-400 text-lg">Successful projects that made a difference</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {pastWork.map((work, index) => (
-              <div
-                key={index}
-                className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-2xl p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all"
-              >
-                <h3 className="text-xl font-bold text-white mb-3">
-                  {work.title}
-                </h3>
+              <div key={index} className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-2xl p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all">
+                <div className="text-6xl mb-4">{work.image}</div>
+                <h3 className="text-xl font-semibold text-white mb-3">{work.title}</h3>
                 <p className="text-gray-400 mb-4">{work.description}</p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {work.tech.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="bg-blue-500/20 text-blue-400 px-2 py-1 rounded text-sm"
-                    >
+                    <span key={techIndex} className="bg-gray-800 text-gray-300 px-2 py-1 rounded-lg text-sm">
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex items-center text-green-400">
-                  <CheckCircle className="w-4 h-4 mr-2" />
-                  <span className="font-semibold">{work.result}</span>
+                <div className="bg-green-500/20 text-green-300 px-3 py-2 rounded-lg text-sm">
+                  📈 {work.result}
                 </div>
               </div>
             ))}
@@ -607,203 +226,88 @@ export default function GenmoidHomepage() {
         </div>
       </section>
 
-      <section id="contact" className="py-20 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Get In Touch
-            </h2>
-          <p className="text-gray-400 text-lg">
-  Ready to start your journey? Let&apos;s discuss your project or career goals
-</p>
 
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-6">
-                  Contact Information
-                </h3>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
-                      <Phone className="w-5 h-5 text-purple-400" />
-                    </div>
-                    <div>
-                      <div className="text-gray-400">Phone</div>
-                      <div className="text-white font-semibold">+91 98765 43210</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
-                      <Mail className="w-5 h-5 text-purple-400" />
-                    </div>
-                    <div>
-                      <div className="text-gray-400">Email</div>
-                      <div className="text-white font-semibold">contact@genmoidsolutions.com</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
-                      <Github className="w-5 h-5 text-purple-400" />
-                    </div>
-                    <div>
-                      <div className="text-gray-400">GitHub</div>
-                      <div className="text-white font-semibold">@genmoidsolutions</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-bold text-white mb-4">
-                  Why Choose Us?
-                </h3>
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400" />
-                    <span className="text-gray-300">100% Original Projects</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400" />
-                    <span className="text-gray-300">Complete Documentation</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400" />
-                    <span className="text-gray-300">Personal Mentorship</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400" />
-                    <span className="text-gray-300">Job Placement Support</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-400" />
-                    <span className="text-gray-300">Lifetime Support</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-2xl p-8 border border-gray-700/50">
-              <div className="space-y-6">
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  value={contactForm.name}
-                  className="w-full bg-gray-800/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none"
-                  onChange={(e) =>
-                    setContactForm({ ...contactForm, name: e.target.value })
-                  }
-                />
-
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  value={contactForm.email}
-                  className="w-full bg-gray-800/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none"
-                  onChange={(e) =>
-                    setContactForm({ ...contactForm, email: e.target.value })
-                  }
-                />
-
-                <textarea
-                  placeholder="Your Message"
-                  rows={5}
-                  value={contactForm.message}
-                  className="w-full bg-gray-800/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none"
-                  onChange={(e) =>
-                    setContactForm({ ...contactForm, message: e.target.value })
-                  }
-                />
-
-                <button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all flex items-center justify-center space-x-2"
-                >
-                  <Send className="w-5 h-5" />
-                  <span>Send Message</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <footer className="py-12 px-4 bg-black/40 border-t border-gray-800">
+      {/* Footer */}
+      <footer className="bg-black/40 border-t border-gray-800 py-12 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
+          <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg flex items-center justify-center">
-                  <Code className="w-4 h-4 text-white" />
-                </div>
-                <span className="text-lg font-bold text-white">Genmoid Solutions</span>
+                <div className="w-10 h-10 bg-transparent rounded-xl flex items-center justify-center">
+                  <Image
+                    src="/logo5.png" // update this to the correct image path
+                    alt="Genmoid Solutions Logo"
+                    width={10}
+                    height={10}
+                    className="w-10 h-10"
+                  />                </div>
+                <span className="text-xl font-bold text-white">Genmoid</span>
               </div>
-              <p className="text-gray-400 text-sm">
-                Empowering students through innovative technology solutions and comprehensive mentorship programs.
+              <p className="text-gray-400 mb-4">
+                Empowering students and businesses through innovative technology solutions.
               </p>
-            </div>
-
-            <div>
-              <h3 className="text-white font-semibold mb-4">Services</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li>Readymade Projects</li>
-                <li>Custom Development</li>
-                <li>Internship Programs</li>
-                <li>Personal Mentorship</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-white font-semibold mb-4">Technologies</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li>Web Development</li>
-                <li>Machine Learning</li>
-                <li>Mobile Development</li>
-                <li>IoT Solutions</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-white font-semibold mb-4">Connect</h3>
               <div className="flex space-x-4">
-  <a
-    href="https://github.com/yourusername"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors"
-  >
-    <Github className="w-4 h-4 text-gray-400 hover:text-white" />
-  </a>
-  <a
-    href="mailto:you@example.com"
-    className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors"
-  >
-    <Mail className="w-4 h-4 text-gray-400 hover:text-white" />
-  </a>
-  <a
-    href="https://twitter.com/yourhandle"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors"
-  >
-    <MessageCircle className="w-4 h-4 text-gray-400 hover:text-white" />
-  </a>
-</div>
+                <a href="https://wa.me/917030020973" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-400 transition-colors">
+                  <MessageSquareMore className="w-5 h-5" />
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
+                  <Facebook className="w-5 h-5" />
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-400 transition-colors">
+                  <Instagram className="w-5 h-5" />
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
+                  <Linkedin className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
 
+            <div>
+              <h4 className="text-white font-semibold mb-4">Services</h4>
+              <ul className="space-y-2">
+                <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Web Development</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Mobile Apps</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Machine Learning</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">IoT Solutions</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-semibold mb-4">Programs</h4>
+              <ul className="space-y-2">
+                <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Internships</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Training</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Certification</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Mentorship</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-semibold mb-4">Company</h4>
+              <ul className="space-y-2">
+                <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">About Us</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Our Team</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Careers</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Contact</a></li>
+              </ul>
             </div>
           </div>
 
-          <div className="pt-8 border-t border-gray-800 text-center">
-            <p className="text-gray-400 text-sm">
-              © 2024 Genmoid Solutions. All rights reserved. Built with ❤️ for students.
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center">
+            <p className="text-gray-400">
+              © 2024 Genmoid Solutions. All rights reserved. Made with ❤️ for students and innovators.
             </p>
           </div>
         </div>
       </footer>
+
+      {/* Scroll to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className="fixed bottom-8 right-8 bg-gradient-to-r from-purple-600 to-pink-600 text-white p-3 rounded-full shadow-lg hover:from-purple-700 hover:to-pink-700 transition-all z-50"
+      >
+        <ArrowUp className="w-6 h-6" />
+      </button>
     </div>
   );
 }
