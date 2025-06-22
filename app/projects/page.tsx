@@ -118,29 +118,26 @@ const ProjectsPage = () => {
       : projects.filter((project) => project.category === activeTab);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900">
+    <div className="min-h-screen bg-gray-50">
       {/* Projects Section */}
-      <section
-        className="py-20 px-4 bg-gradient-to-r from-gray-900/50 to-gray-800/50"
-        id="projects"
-      >
+      <section className="py-20 px-4 bg-white" id="projects">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Ready-to-Use Projects
             </h2>
-            <p className="text-gray-400 text-lg">
+            <p className="text-gray-600 text-lg">
               High-quality projects with source code and documentation
             </p>
           </div>
 
           <div className="flex justify-center mb-8">
-            <div className="bg-gray-800/50 rounded-full p-1 backdrop-blur-md">
+            <div className="bg-gray-100 rounded-full p-1 shadow-sm">
               <button
                 className={`px-6 py-2 rounded-full transition-all ${
                   activeTab === "all"
-                    ? "bg-purple-600 text-white"
-                    : "text-gray-400 hover:text-white"
+                    ? "bg-blue-600 text-white shadow-md"
+                    : "text-gray-600 hover:text-gray-900"
                 }`}
                 onClick={() => setActiveTab("all")}
               >
@@ -149,8 +146,8 @@ const ProjectsPage = () => {
               <button
                 className={`px-6 py-2 rounded-full transition-all ${
                   activeTab === "web"
-                    ? "bg-purple-600 text-white"
-                    : "text-gray-400 hover:text-white"
+                    ? "bg-blue-600 text-white shadow-md"
+                    : "text-gray-600 hover:text-gray-900"
                 }`}
                 onClick={() => setActiveTab("web")}
               >
@@ -159,8 +156,8 @@ const ProjectsPage = () => {
               <button
                 className={`px-6 py-2 rounded-full transition-all ${
                   activeTab === "ml"
-                    ? "bg-purple-600 text-white"
-                    : "text-gray-400 hover:text-white"
+                    ? "bg-blue-600 text-white shadow-md"
+                    : "text-gray-600 hover:text-gray-900"
                 }`}
                 onClick={() => setActiveTab("ml")}
               >
@@ -169,8 +166,8 @@ const ProjectsPage = () => {
               <button
                 className={`px-6 py-2 rounded-full transition-all ${
                   activeTab === "iot"
-                    ? "bg-purple-600 text-white"
-                    : "text-gray-400 hover:text-white"
+                    ? "bg-blue-600 text-white shadow-md"
+                    : "text-gray-600 hover:text-gray-900"
                 }`}
                 onClick={() => setActiveTab("iot")}
               >
@@ -183,33 +180,33 @@ const ProjectsPage = () => {
             {filteredProjects.map((project) => (
               <div
                 key={project.id}
-                className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-2xl p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all group"
+                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-gray-200 group"
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-2">
                     <div className="flex items-center space-x-1">
                       <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                      <span className="text-sm text-gray-400">
+                      <span className="text-sm text-gray-600">
                         {project.rating}
                       </span>
                     </div>
                   </div>
-                  <span className="text-2xl font-bold text-purple-400">
+                  <span className="text-2xl font-bold text-blue-600">
                     ₹{project.price}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
                   {project.title}
                 </h3>
-                <p className="text-gray-400 mb-4">{project.description}</p>
+                <p className="text-gray-600 mb-4">{project.description}</p>
 
                 <div className="mb-4">
                   <div className="flex flex-wrap gap-2 mb-3">
                     {project.tech.map((tech, index) => (
                       <span
                         key={index}
-                        className="bg-gray-800 text-gray-300 px-2 py-1 rounded-lg text-sm"
+                        className="bg-gray-100 text-gray-700 px-2 py-1 rounded-lg text-sm"
                       >
                         {tech}
                       </span>
@@ -219,7 +216,7 @@ const ProjectsPage = () => {
                     {project.features.map((feature, index) => (
                       <span
                         key={index}
-                        className="bg-purple-500/20 text-purple-300 px-2 py-1 rounded-lg text-xs"
+                        className="bg-blue-50 text-blue-600 px-2 py-1 rounded-lg text-xs"
                       >
                         {feature}
                       </span>
@@ -228,12 +225,12 @@ const ProjectsPage = () => {
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-green-400">{project.demo}</span>
+                  <span className="text-sm text-green-600">{project.demo}</span>
                   <div className="flex space-x-2">
-                    <button className="bg-gray-800 text-gray-300 px-3 py-2 rounded-lg hover:bg-gray-700 transition-colors">
+                    <button className="bg-gray-100 text-gray-600 px-3 py-2 rounded-lg hover:bg-gray-200 transition-colors">
                       <Play className="w-4 h-4" />
                     </button>
-                    <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-2 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all flex items-center space-x-2">
+                    <button className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all flex items-center space-x-2 shadow-sm">
                       <ShoppingCart className="w-4 h-4" />
                       <span>Buy Now</span>
                     </button>

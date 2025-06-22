@@ -55,15 +55,12 @@ const services = [
 ];
 
 const ServicesPage = () => (
-  <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900">
-    <section
-      className="py-20 px-4 bg-gradient-to-r from-gray-900/50 to-gray-800/50"
-      id="services"
-    >
+  <div className="min-h-screen bg-gray-50">
+    <section className="py-20 px-4 bg-white" id="services">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">We Provide</h2>
-          <p className="text-gray-400 text-lg">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">We Provide</h2>
+          <p className="text-gray-600 text-lg">
             Comprehensive technology solutions for your business needs
           </p>
         </div>
@@ -71,17 +68,17 @@ const ServicesPage = () => (
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-2xl p-8 border border-gray-700/50 hover:border-purple-500/50 transition-all group"
+              className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-all border border-gray-200 group"
             >
               <div
-                className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}
+                className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-white`}
               >
                 {service.icon}
               </div>
-              <h4 className="text-xl font-semibold text-white mb-4">
+              <h4 className="text-xl font-semibold text-gray-900 mb-4">
                 {service.title}
               </h4>
-              <p className="text-gray-400">{service.description}</p>
+              <p className="text-gray-600">{service.description}</p>
             </div>
           ))}
         </div>
