@@ -21,7 +21,7 @@ const Topbar: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-2">
-              <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl shadow-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-transparent rounded-2xl shadow-lg flex items-center justify-center">
                 <Image
                   alt="Genmoid Solutions Logo"
                   className="w-10 h-10"
