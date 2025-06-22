@@ -1,164 +1,178 @@
 "use client";
 import React, { useState } from "react";
-import {
-  Code,
-  Lightbulb,
-  Phone,
-  Mail,
-  Star,
-  Briefcase,
-  ShoppingCart,
-  Send,
-  Play,
-  MapPin,
-  CheckCircle,
-  ChevronLeft,
-  ChevronRight,
-  Smartphone,
-  Cloud,
-  LineChart,
-  Cog,
-  Network,
-  Monitor,
-  ArrowUp,
-  Facebook,
-  Instagram,
-  Linkedin,
-  MessageSquareMore
-} from "lucide-react";
+import { Star, ShoppingCart, Play } from "lucide-react";
 
 const projects = [
-    {
-      id: 1,
-      title: "E-Commerce Web App",
-      category: "web",
-      tech: ["React", "Node.js", "MongoDB"],
-      price: 2999,
-      description: "Full-stack e-commerce solution with admin panel, payment gateway, and inventory management.",
-      demo: "🎥 Demo Available",
-      rating: 4.9,
-      features: ["Payment Integration", "Admin Dashboard", "Inventory Management", "User Authentication"]
-    },
-    {
-      id: 2,
-      title: "AI Chatbot System",
-      category: "ml",
-      tech: ["Python", "TensorFlow", "Flask"],
-      price: 3999,
-      description: "Intelligent chatbot with NLP capabilities for customer service automation.",
-      demo: "🎥 Demo Available",
-      rating: 4.8,
-      features: ["Natural Language Processing", "Multi-language Support", "Analytics Dashboard", "API Integration"]
-    },
-    {
-      id: 3,
-      title: "IoT Home Automation",
-      category: "iot",
-      tech: ["Arduino", "ESP32", "React"],
-      price: 2499,
-      description: "Complete home automation system with mobile app control and sensor integration.",
-      demo: "🎥 Demo Available",
-      rating: 4.7,
-      features: ["Voice Control", "Mobile App", "Sensor Integration", "Energy Monitoring"]
-    },
-    {
-      id: 4,
-      title: "Stock Price Predictor",
-      category: "ml",
-      tech: ["Python", "Pandas", "Scikit-learn"],
-      price: 1999,
-      description: "Machine learning model for stock price prediction with data visualization dashboard.",
-      demo: "🎥 Demo Available",
-      rating: 4.6,
-      features: ["Real-time Predictions", "Data Visualization", "Historical Analysis", "Risk Assessment"]
-    },
-    {
-      id: 5,
-      title: "Social Media Dashboard",
-      category: "web",
-      tech: ["React", "Express", "MySQL"],
-      price: 2299,
-      description: "Complete social media management dashboard with analytics and scheduling features.",
-      demo: "🎥 Demo Available",
-      rating: 4.5,
-      features: ["Post Scheduling", "Analytics", "Multi-platform Support", "Team Collaboration"]
-    },
-    {
-      id: 6,
-      title: "Healthcare Management System",
-      category: "web",
-      tech: ["React", "Django", "PostgreSQL"],
-      price: 3499,
-      description: "Comprehensive healthcare management system with patient records and appointment scheduling.",
-      demo: "🎥 Demo Available",
-      rating: 4.8,
-      features: ["Patient Records", "Appointment Scheduling", "Medical History", "Prescription Management"]
-    }
-  ];
-
-const heroSlides: string[] = []; // Placeholder, since heroSlides is referenced but not defined
+  {
+    id: 1,
+    title: "E-Commerce Web App",
+    category: "web",
+    tech: ["React", "Node.js", "MongoDB"],
+    price: 2999,
+    description:
+      "Full-stack e-commerce solution with admin panel, payment gateway, and inventory management.",
+    demo: "🎥 Demo Available",
+    rating: 4.9,
+    features: [
+      "Payment Integration",
+      "Admin Dashboard",
+      "Inventory Management",
+      "User Authentication",
+    ],
+  },
+  {
+    id: 2,
+    title: "AI Chatbot System",
+    category: "ml",
+    tech: ["Python", "TensorFlow", "Flask"],
+    price: 3999,
+    description:
+      "Intelligent chatbot with NLP capabilities for customer service automation.",
+    demo: "🎥 Demo Available",
+    rating: 4.8,
+    features: [
+      "Natural Language Processing",
+      "Multi-language Support",
+      "Analytics Dashboard",
+      "API Integration",
+    ],
+  },
+  {
+    id: 3,
+    title: "IoT Home Automation",
+    category: "iot",
+    tech: ["Arduino", "ESP32", "React"],
+    price: 2499,
+    description:
+      "Complete home automation system with mobile app control and sensor integration.",
+    demo: "🎥 Demo Available",
+    rating: 4.7,
+    features: [
+      "Voice Control",
+      "Mobile App",
+      "Sensor Integration",
+      "Energy Monitoring",
+    ],
+  },
+  {
+    id: 4,
+    title: "Stock Price Predictor",
+    category: "ml",
+    tech: ["Python", "Pandas", "Scikit-learn"],
+    price: 1999,
+    description:
+      "Machine learning model for stock price prediction with data visualization dashboard.",
+    demo: "🎥 Demo Available",
+    rating: 4.6,
+    features: [
+      "Real-time Predictions",
+      "Data Visualization",
+      "Historical Analysis",
+      "Risk Assessment",
+    ],
+  },
+  {
+    id: 5,
+    title: "Social Media Dashboard",
+    category: "web",
+    tech: ["React", "Express", "MySQL"],
+    price: 2299,
+    description:
+      "Complete social media management dashboard with analytics and scheduling features.",
+    demo: "🎥 Demo Available",
+    rating: 4.5,
+    features: [
+      "Post Scheduling",
+      "Analytics",
+      "Multi-platform Support",
+      "Team Collaboration",
+    ],
+  },
+  {
+    id: 6,
+    title: "Healthcare Management System",
+    category: "web",
+    tech: ["React", "Django", "PostgreSQL"],
+    price: 3499,
+    description:
+      "Comprehensive healthcare management system with patient records and appointment scheduling.",
+    demo: "🎥 Demo Available",
+    rating: 4.8,
+    features: [
+      "Patient Records",
+      "Appointment Scheduling",
+      "Medical History",
+      "Prescription Management",
+    ],
+  },
+];
 
 const ProjectsPage = () => {
-  const [activeTab, setActiveTab] = useState<"all" | "web" | "ml" | "iot">("all");
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [activeTab, setActiveTab] = useState<"all" | "web" | "ml" | "iot">(
+    "all",
+  );
 
-  const filteredProjects = activeTab === "all"
-    ? projects
-    : projects.filter((project) => project.category === activeTab);
-
-  const nextSlide = () => {
-    setActiveSlide((prev) => (prev + 1) % heroSlides.length);
-  };
-
-  const prevSlide = () => {
-    setActiveSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
-  };
+  const filteredProjects =
+    activeTab === "all"
+      ? projects
+      : projects.filter((project) => project.category === activeTab);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900">
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-4 bg-gradient-to-r from-gray-900/50 to-gray-800/50">
+      <section
+        className="py-20 px-4 bg-gradient-to-r from-gray-900/50 to-gray-800/50"
+        id="projects"
+      >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">Ready-to-Use Projects</h2>
-            <p className="text-gray-400 text-lg">High-quality projects with source code and documentation</p>
+            <h2 className="text-4xl font-bold text-white mb-4">
+              Ready-to-Use Projects
+            </h2>
+            <p className="text-gray-400 text-lg">
+              High-quality projects with source code and documentation
+            </p>
           </div>
 
           <div className="flex justify-center mb-8">
             <div className="bg-gray-800/50 rounded-full p-1 backdrop-blur-md">
               <button
+                className={`px-6 py-2 rounded-full transition-all ${
+                  activeTab === "all"
+                    ? "bg-purple-600 text-white"
+                    : "text-gray-400 hover:text-white"
+                }`}
                 onClick={() => setActiveTab("all")}
-                className={`px-6 py-2 rounded-full transition-all ${activeTab === "all"
-                  ? "bg-purple-600 text-white"
-                  : "text-gray-400 hover:text-white"
-                  }`}
               >
                 All Projects
               </button>
               <button
+                className={`px-6 py-2 rounded-full transition-all ${
+                  activeTab === "web"
+                    ? "bg-purple-600 text-white"
+                    : "text-gray-400 hover:text-white"
+                }`}
                 onClick={() => setActiveTab("web")}
-                className={`px-6 py-2 rounded-full transition-all ${activeTab === "web"
-                  ? "bg-purple-600 text-white"
-                  : "text-gray-400 hover:text-white"
-                  }`}
               >
                 Web Development
               </button>
               <button
+                className={`px-6 py-2 rounded-full transition-all ${
+                  activeTab === "ml"
+                    ? "bg-purple-600 text-white"
+                    : "text-gray-400 hover:text-white"
+                }`}
                 onClick={() => setActiveTab("ml")}
-                className={`px-6 py-2 rounded-full transition-all ${activeTab === "ml"
-                  ? "bg-purple-600 text-white"
-                  : "text-gray-400 hover:text-white"
-                  }`}
               >
                 Machine Learning
               </button>
               <button
+                className={`px-6 py-2 rounded-full transition-all ${
+                  activeTab === "iot"
+                    ? "bg-purple-600 text-white"
+                    : "text-gray-400 hover:text-white"
+                }`}
                 onClick={() => setActiveTab("iot")}
-                className={`px-6 py-2 rounded-full transition-all ${activeTab === "iot"
-                  ? "bg-purple-600 text-white"
-                  : "text-gray-400 hover:text-white"
-                  }`}
               >
                 IoT
               </button>
@@ -167,31 +181,46 @@ const ProjectsPage = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project) => (
-              <div key={project.id} className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-2xl p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all group">
+              <div
+                key={project.id}
+                className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-2xl p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all group"
+              >
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-2">
                     <div className="flex items-center space-x-1">
                       <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                      <span className="text-sm text-gray-400">{project.rating}</span>
+                      <span className="text-sm text-gray-400">
+                        {project.rating}
+                      </span>
                     </div>
                   </div>
-                  <span className="text-2xl font-bold text-purple-400">₹{project.price}</span>
+                  <span className="text-2xl font-bold text-purple-400">
+                    ₹{project.price}
+                  </span>
                 </div>
 
-                <h3 className="text-xl font-semibold text-white mb-3">{project.title}</h3>
+                <h3 className="text-xl font-semibold text-white mb-3">
+                  {project.title}
+                </h3>
                 <p className="text-gray-400 mb-4">{project.description}</p>
 
                 <div className="mb-4">
                   <div className="flex flex-wrap gap-2 mb-3">
                     {project.tech.map((tech, index) => (
-                      <span key={index} className="bg-gray-800 text-gray-300 px-2 py-1 rounded-lg text-sm">
+                      <span
+                        key={index}
+                        className="bg-gray-800 text-gray-300 px-2 py-1 rounded-lg text-sm"
+                      >
                         {tech}
                       </span>
                     ))}
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {project.features.map((feature, index) => (
-                      <span key={index} className="bg-purple-500/20 text-purple-300 px-2 py-1 rounded-lg text-xs">
+                      <span
+                        key={index}
+                        className="bg-purple-500/20 text-purple-300 px-2 py-1 rounded-lg text-xs"
+                      >
                         {feature}
                       </span>
                     ))}

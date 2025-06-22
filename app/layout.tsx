@@ -1,12 +1,12 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
-import clsx from "clsx";
-import Topbar from "@/components/topbar";
 
+import clsx from "clsx";
 import { Providers } from "./providers";
 
-import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
+import { siteConfig } from "@/config/site";
+import Topbar from "@/components/topbar";
 
 export const metadata: Metadata = {
   title: {
@@ -42,10 +42,8 @@ export default function RootLayout({
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col h-screen">
-            <Topbar/>
-            <main >
-              {children}
-            </main>
+            <Topbar />
+            <main>{children}</main>
           </div>
         </Providers>
       </body>
